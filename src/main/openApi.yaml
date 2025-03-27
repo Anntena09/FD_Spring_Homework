@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Currency Tracking API
+  title: ru.Anntena09.currencysistem.Currency Tracking API
   description: API для отслеживания курса валют
   version: 1.0.0
 
@@ -20,7 +20,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Currency"
+                  $ref: "#/components/schemas/ru.Anntena09.currencysistem.Currency"
         "400":
           description: Некорректный запрос
         "500":
@@ -34,7 +34,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CurrencyRequest"
+              $ref: "#/components/schemas/ru.Anntena09.currencysistem.CurrencyRequest"
       responses:
         "201":
           description: Валюта успешно добавлена
@@ -59,7 +59,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Currency"
+                $ref: "#/components/schemas/ru.Anntena09.currencysistem.Currency"
         "404":
           description: Валюта не найдена
         "500":
@@ -79,7 +79,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CurrencyRequest"
+              $ref: "#/components/schemas/ru.Anntena09.currencysistem.CurrencyRequest"
       responses:
         "200":
           description: Данные валюты успешно обновлены

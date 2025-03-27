@@ -1,3 +1,5 @@
+package ru.Anntena09.currencysistem;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class CurrencyController {
         return currencies.stream()
                 .filter(c -> c.getId().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Currency not found"));
+                .orElseThrow(() -> new RuntimeException("ru.Anntena09.currencysistem.Currency not found"));
     }
 
     @PutMapping("/{id}")

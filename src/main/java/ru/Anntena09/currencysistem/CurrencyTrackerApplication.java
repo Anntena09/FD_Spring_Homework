@@ -1,3 +1,5 @@
+package ru.Anntena09.currencysistem;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
