@@ -1,34 +1,36 @@
-version: '3.0'
-
 services:
-  app:
-    build: .
-    container_name: user-service
-    networks:
-      - app_network
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-
-  db:
-    image: postgres:15
-    container_name: user-db
-    networks:
-      - app_network
-    restart: always
+  postgres:
+    image: postgres:13
+    container_name: currency_postgres
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: currency_tracker
+      POSTGRES_DB: currency_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - currency-network
+
+  app:
+    build: .
+    container_name: currency_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/currency_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    networks:
+      - currency-network
 
 volumes:
-  pg_data:
+  postgres_data:
 
 networks:
-  app_network:
+  currency-network:
+    driver: bridge
 
