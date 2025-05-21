@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: FDS-Spring
+  datasource:
+    url: jdbc:postgresql://localhost:5432/currency_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+  spring:
+    task:
+      scheduling:
+        enabled: true
+  logging:
+    level:
+      root: INFO
+      ru.Anntena09.currencysistem.service: DEBUG
+      org.springframework.web: WARN
+    file:
+      name: logs/currency-monitor.log
+    pattern:
+      file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+      console: "%d{HH:mm:ss} %-5level %msg%n"
